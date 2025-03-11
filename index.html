@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EdTech - Your gateway to affordable and flexible online learning. Explore courses in web development, data science, digital marketing, and more.">
+    <title>EdTech - Online Learning Platform</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-in-out;
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .course-list {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .course-list li {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+        .course-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        blockquote {
+            background-color: #fff;
+            padding: 20px;
+            border-left: 5px solid #4CAF50;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .cta-button:hover {
+            background-color: #45a049;
+        }
+        .logo {
+            width: 150px;
+            height: auto;
+            animation: bounce 2s infinite;
+        }
+        .hero {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: slideInLeft 1s ease-in-out;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideInRight 1s ease-in-out;
+        }
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .testimonial-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.5s ease-in-out;
+        }
+        .testimonial-card p {
+            margin: 0;
+        }
+        .testimonial-card em {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .course-icon {
+            cursor: pointer;
+            font-size: 24px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+        .course-icon:hover {
+            transform: scale(1.2);
+        }
+        .course-dropdown {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .course-dropdown ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .course-dropdown ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .course-dropdown ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#home">
+            <img src="logo.png" alt="EdTech Logo" class="logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/150'; this.alt='Logo not found';">
+        </a>
+        <h1>EdTech</h1>
+        <p style="font-size: 18px; font-weight: bold; color: #f4f4f4;">FUELING KNOWLEDGE. EMPOWERING FUTURES.</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#courses">Courses</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h2>Learn Anytime, Anywhere</h2>
+        <p>Join thousands of learners worldwide and unlock your potential with our affordable and flexible online courses.</p>
+        <a href="#courses" class="cta-button">Get Started</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Us Section -->
+        <section id="about">
+            <h2>About Us</h2>
+            <p>At <strong>EdTech</strong>, we believe that education should be accessible to everyone. Our platform is designed to provide high-quality, affordable, and flexible learning opportunities. With expert instructors and a variety of courses, we focus on empowering individuals to grow and succeed in their chosen fields.</p>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses">
+            <h2>Our Courses</h2>
+            <div class="course-icons">
+                <span class="course-icon" onclick="toggleDropdown('web-dev')">🌐 Web Development</span>
+                <span class="course-icon" onclick="toggleDropdown('data-science')">📊 Data Science</span>
+                <span class="course-icon" onclick="toggleDropdown('digital-marketing')">📈 Digital Marketing</span>
+            </div>
+            <div id="web-dev" class="course-dropdown">
+                <ul>
+                    <li>HTML & CSS Basics</li>
+                    <li>JavaScript Fundamentals</li>
+                    <li>React.js for Beginners</li>
+                    <li>Node.js and Express</li>
+                </ul>
+            </div>
+            <div id="data-science" class="course-dropdown">
+                <ul>
+                    <li>Python for Data Science</li>
+                    <li>Machine Learning Basics</li>
+                    <li>Data Visualization with Tableau</li>
+                    <li>Big Data Analytics</li>
+                </ul>
+            </div>
+            <div id="digital-marketing" class="course-dropdown">
+                <ul>
+                    <li>SEO Fundamentals</li>
+                    <li>Social Media Marketing</li>
+                    <li>Email Marketing Strategies</li>
+                    <li>Content Marketing</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2>What Our Students Say</h2>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <p>"EdTech helped me upskill and land my dream job in data science. The courses are well-structured and affordable!"</p>
+                    <em>– John Doe</em>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I love the flexibility of learning at my own pace. The instructors are knowledgeable and supportive."</p>
+                    <em>– Jane Smith</em>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The digital marketing course transformed my career. I now run my own successful online business!"</p>
+                    <em>– Sarah Johnson</em>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 EdTech. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </p>
+        <p>
+            Follow us: 
+            <a href="#">Facebook</a> | 
+            <a href="#">Twitter</a> | 
+            <a href="#">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle course dropdowns
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            } else {
+                dropdown.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
